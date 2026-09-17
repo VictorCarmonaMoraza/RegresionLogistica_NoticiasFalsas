@@ -1,5 +1,6 @@
 import pandas as pd
 
+from procesamiento_datos.entrenamiento_algoritmo import prueba_entrenamiento
 from procesamiento_datos.porcesamiento_nltk import pruebaNLTK, procesar_df_by_NLTK, procesar_df_by_NLTKV2, \
     eliminar_prefijos
 from procesamiento_datos.preprocesamiento_texto import preprocesar_texto
@@ -244,27 +245,31 @@ df = pd.concat([df_true,df_fake],ignore_index=True)
 #Cojemos 1000 noticias de manera aleatoria
 df_sample = df.sample(n=1000, random_state=42)
 
-print(f'el numero de noticias es: {len(df_sample)}')
-print(f'\nDistribucion de etiquetas:')
+'''print(f'el numero de noticias es: {len(df_sample)}')
+print(f'\nDistribucion de etiquetas:')'''
 #Cuenta cuántas veces aparece cada valor diferente.
-print(df_sample["label"].value_counts())
+'''print(df_sample["label"].value_counts())'''
 
-print("Preprocesando las noticias")
+'''print("Preprocesando las noticias")
 df_sample["text_clean"] = df_sample["text"].apply(preprocesar_texto)
 
 df_result = df_sample
-print("Listo")
+print("Listo")'''
 
 #Vemos el resultado
-print(df_sample[["text","text_clean","label"]].head())
+'''print(df_sample[["text","text_clean","label"]].head())
 
 print("TEXTO ORIGINAL:")
 print(df_sample["text"].iloc[0])
 
 print("\nTEXTO PREPROCESADO:")
-print(df_sample["text_clean"].iloc[0])
+print(df_sample["text_clean"].iloc[0])'''
 
-vectorizar_texto(df_result)
+#vectorizar_texto(df_result)
+
+
+
+prueba_entrenamiento(df)
 
 
 

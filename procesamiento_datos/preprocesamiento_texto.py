@@ -3,7 +3,13 @@ import pandas as pd
 import re
 import string
 
-from bs4 import BeautifulSoup
+from bs4 import BeautifulSoup, MarkupResemblesLocatorWarning
+import warnings
+
+warnings.filterwarnings(
+    "ignore",
+    category=MarkupResemblesLocatorWarning
+)
 
 nltk.download('punkt', quiet=True)
 nltk.download('punkt_tab', quiet=True)
