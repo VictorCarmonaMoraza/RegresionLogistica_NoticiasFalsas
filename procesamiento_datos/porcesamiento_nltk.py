@@ -95,7 +95,7 @@ def comprobar_stop_word():
         print("La eliminamos")
 
 
-comprobar_stop_word()
+#comprobar_stop_word()
 
 def procesar_df_by_NLTKV2(df: pd.DataFrame):
 
