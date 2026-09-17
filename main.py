@@ -5,6 +5,7 @@ from procesamiento_datos.porcesamiento_nltk import pruebaNLTK, procesar_df_by_NL
 from procesamiento_datos.preprocesamiento_texto import preprocesar_texto
 from procesamiento_datos.procesamiento_datos import limpiar_HTML, buscar_registros_con_url, eliminamos_url, \
     remove_puntuation
+from procesamiento_datos.procesamiento_vectorizacion import vectorizar_texto
 
 #####################################################
 ## Leemos los dos archivos csv
@@ -249,7 +250,9 @@ print(f'\nDistribucion de etiquetas:')
 print(df_sample["label"].value_counts())
 
 print("Preprocesando las noticias")
-df_sample["text_clean"]=df_sample["text"].apply(preprocesar_texto)
+df_sample["text_clean"] = df_sample["text"].apply(preprocesar_texto)
+
+df_result = df_sample
 print("Listo")
 
 #Vemos el resultado
@@ -260,6 +263,8 @@ print(df_sample["text"].iloc[0])
 
 print("\nTEXTO PREPROCESADO:")
 print(df_sample["text_clean"].iloc[0])
+
+vectorizar_texto(df_result)
 
 
 
