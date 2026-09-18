@@ -39,6 +39,31 @@ def prueba_entrenamiento(df):
     clf = LogisticRegression(max_iter=1000)
     clf.fit(X_train,y_train)
 
+    #Prediccion
+    #Tomamos las 500 noticias que NO se ha utilizado para entrenar el algoritmo
+    df_test=df_all.iloc[1000:]
+
+    print("Preprocesando noticias de test")
+    df_test["text_clean"]=df_test["text"].apply(preprocesar_texto)
+    print("Listo")
+
+    X_test=df_test["text_clean"]
+    y_test=df_test["label"]
+
+    print(f"Noticias de test: {len(X_test)}")
+
+    #Aplicamos CountVextorizer
+    X_test =vectorizer.transform(X_test)
+
+    y_pred = clf.predict(X_test)
+    print(y_pred)
+
+    print("Prediccion:\n",y_pred)
+    print("\nEtiquetas reales:\n",y_test.values)
+
+    from sklearn.metrics import accuracy_score
+    print("Acurracy: {:.3f}".format(accuracy_score(y_test,y_pred)))
+
 
     print("Listo")
 
